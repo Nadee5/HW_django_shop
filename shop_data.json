@@ -1,0 +1,86 @@
+[
+  {
+    "model": "shop.category",
+    "pk": 1,
+    "fields": {
+      "name": "Аудиотехника",
+      "description": "Портативное/ домашнее аудио, наушники, автозвук"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 2,
+    "fields": {
+      "name": "Техника для кухни",
+      "description": "Крупная/ мелкая/ встраиваемая"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 3,
+    "fields": {
+      "name": "Техника для дома",
+      "description": "Климатическая техника, уход за одеждой"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": 4,
+    "fields": {
+      "name": "Умный дом",
+      "description": "Экосистемы, устройства, умный свет, датчики"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 1,
+    "fields": {
+      "name": "Наушники",
+      "description": "Полноразмерные",
+      "image": "product/Наушники.png",
+      "category": 1,
+      "price_for_one": "5800.00",
+      "date_of_create": "2023-12-21T12:45:29.173Z",
+      "date_of_last_change": "2023-12-21T12:45:29.173Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 2,
+    "fields": {
+      "name": "Кофемашина",
+      "description": "Автоматическая",
+      "image": "product/Кофемашина.png",
+      "category": 2,
+      "price_for_one": "30000.00",
+      "date_of_create": "2023-12-21T12:46:08.946Z",
+      "date_of_last_change": "2023-12-21T12:46:08.946Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 3,
+    "fields": {
+      "name": "Робот-пылесос",
+      "description": "Для влажной уборки",
+      "image": "product/Робот.png",
+      "category": 3,
+      "price_for_one": "34000.00",
+      "date_of_create": "2023-12-21T12:46:50.232Z",
+      "date_of_last_change": "2023-12-21T12:46:50.232Z"
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": 4,
+    "fields": {
+      "name": "Датчик открытия дверей и окон",
+      "description": "Экосистема Яндекс",
+      "image": "product/Датчик.png",
+      "category": 4,
+      "price_for_one": "2000.00",
+      "date_of_create": "2023-12-21T12:48:15.482Z",
+      "date_of_last_change": "2023-12-21T12:48:15.482Z"
+    }
+  }
+]
