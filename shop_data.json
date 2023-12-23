@@ -4,7 +4,8 @@
     "pk": 1,
     "fields": {
       "name": "Аудиотехника",
-      "description": "Портативное/ домашнее аудио, наушники, автозвук"
+      "description": "Портативное/ домашнее аудио, наушники, автозвук",
+      "image": "category/audio.jpg"
     }
   },
   {
@@ -12,7 +13,8 @@
     "pk": 2,
     "fields": {
       "name": "Техника для кухни",
-      "description": "Крупная/ мелкая/ встраиваемая"
+      "description": "Крупная/ мелкая/ встраиваемая",
+      "image": "category/kitchen_appliances.jpg"
     }
   },
   {
@@ -20,7 +22,8 @@
     "pk": 3,
     "fields": {
       "name": "Техника для дома",
-      "description": "Климатическая техника, уход за одеждой"
+      "description": "Климатическая техника, уход за одеждой",
+      "image": "category/home_appliances.png"
     }
   },
   {
@@ -28,7 +31,8 @@
     "pk": 4,
     "fields": {
       "name": "Умный дом",
-      "description": "Экосистемы, устройства, умный свет, датчики"
+      "description": "Экосистемы, устройства, умный свет, датчики",
+      "image": "category/smart_home.jpg"
     }
   },
   {
@@ -37,7 +41,7 @@
     "fields": {
       "name": "Наушники",
       "description": "Полноразмерные",
-      "image": "product/Наушники.png",
+      "image": "product/headphones.png",
       "category": 1,
       "price_for_one": "5800.00",
       "date_of_create": "2023-12-21T12:45:29.173Z",
@@ -50,7 +54,7 @@
     "fields": {
       "name": "Кофемашина",
       "description": "Автоматическая",
-      "image": "product/Кофемашина.png",
+      "image": "product/coffee_machine.png",
       "category": 2,
       "price_for_one": "30000.00",
       "date_of_create": "2023-12-21T12:46:08.946Z",
@@ -63,7 +67,7 @@
     "fields": {
       "name": "Робот-пылесос",
       "description": "Для влажной уборки",
-      "image": "product/Робот.png",
+      "image": "product/robot_vacuum.png",
       "category": 3,
       "price_for_one": "34000.00",
       "date_of_create": "2023-12-21T12:46:50.232Z",
@@ -76,7 +80,7 @@
     "fields": {
       "name": "Датчик открытия дверей и окон",
       "description": "Экосистема Яндекс",
-      "image": "product/Датчик.png",
+      "image": "product/sensor.png",
       "category": 4,
       "price_for_one": "2000.00",
       "date_of_create": "2023-12-21T12:48:15.482Z",
