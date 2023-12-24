@@ -1,0 +1,25 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">{{ title }}</h1>
+    </div>
+</section>
+<div class="row">
+    {% for object in object_list %}
+    <div class="col-md-6">
+        {% include 'shop/includes/inc_cat.html' %}
+        <div class="d-flex justify-content-between align-items-center">
+            <p class="lead">
+                <a href="{% url 'shop:product' object.pk %}"
+                   class="btn btn-lg btn-secondary fw-bold border-dark bg-white">Перейти
+                    к товару</a>
+            </p>
+        </div>
+    </div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

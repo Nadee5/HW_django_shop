@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">{{ title }}</h1>
+    </div>
+</section>
+<div class="row">
+    {% for object in object_list %}
+    <div class="card mb-4 box-shadow">
+        {% include 'shop/includes/inc_cat.html' %}
+                <h4 class="card-title text-dark">{{ object.price_for_one }} руб.</h4>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-dark btn-lg px-4 gap-3">Заказать в один клик</button>
+                <button type="button" class="btn btn-dark btn-lg px-4">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
