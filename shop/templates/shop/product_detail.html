@@ -7,7 +7,6 @@
     </div>
 </section>
 <div class="row">
-    {% for object in object_list %}
     <div class="card mb-4 box-shadow">
         {% include 'shop/includes/inc_cat.html' %}
                 <h4 class="card-title text-dark">{{ object.price_for_one }} руб.</h4>
@@ -18,6 +17,5 @@
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
