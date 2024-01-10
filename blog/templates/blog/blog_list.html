@@ -15,9 +15,9 @@
                 <div class="btn-group">
                     <a href="{% url 'blog:blog_detail' object.slug %}"
                        class="btn btn-sm btn-outline-secondary">Показать</a>
-                    <a href="{% url 'blog:blog_update' object.pk %}"
+                    <a href="{% url 'blog:blog_update' object.slug %}"
                        type="button" class="btn btn-sm btn-outline-secondary">Изменить</a>
-                    <a href="{% url 'blog:blog_delete' object.pk %}"
+                    <a href="{% url 'blog:blog_delete' object.slug %}"
                        type="button" class="btn btn-sm btn-outline-secondary">Удалить</a>
                 </div>
 <!--                {% if object.is_published %}-->
