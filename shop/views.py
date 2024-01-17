@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
+from shop.forms import ProductForm
 from shop.models import Category, Product
 
 
@@ -36,8 +37,28 @@ class ProductListView(ListView):
 class ProductDetailView(DetailView):
     model = Product
     extra_context = {
-        'title': 'ПРОДУКТ',
+        'title': '',
     }
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    success_url = 'shop:home' #market
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = 'shop:home' #market
+
+
+class ProductAllListView(ListView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'shop/all_products_list/html'
+
+
 
 
 
