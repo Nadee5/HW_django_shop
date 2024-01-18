@@ -28,6 +28,24 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.name} ({self.category}) - {self.price_for_one}'
 
+    @property
+    def current_version(self):
+        return Version.objects.filter(is_current=True, product_id=self.id).first()
+
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Продукт')
+    version_number = models.FloatField(verbose_name='Номер версии')
+    version_name = models.CharField(max_length=100, verbose_name='Название версии')
+    is_current = models.BooleanField(default=False, verbose_name='Текущая версия')
+
+    def __str__(self):
+        return f'версия {self.version_number}'
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
