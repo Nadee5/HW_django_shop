@@ -1,5 +1,7 @@
+
 from django.db import models
 
+from config import settings
 
 NULLABLE = {'blank': True, 'null': True}
 
@@ -12,6 +14,8 @@ class Blog(models.Model):
     date_of_create = models.DateField(auto_now=True, verbose_name='Дата создания')
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
     views_count = models.IntegerField(default=0, verbose_name='Просмотры')
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Владелец', **NULLABLE)
 
     def __str__(self):
         return self.title

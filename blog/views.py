@@ -8,15 +8,17 @@ from blog.models import Blog
 
 class BlogCreateView(CreateView):
     model = Blog
-    fields = '__all__'
+    fields = ('title', 'content', 'image',)
     success_url = reverse_lazy('blog:blog_list')
 
     def form_valid(self, form):
         if form.is_valid():
             new_blog = form.save()
             new_blog.slug = slugify(new_blog.title)
+            new_blog.owner = self.request.user
             new_blog.save()
-        return super().form_valid(form)
+
+            return super().form_valid(form)
 
 
 class BlogUpdateView(UpdateView):
@@ -31,7 +33,7 @@ class BlogUpdateView(UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('blog:blog_detail', args=[self.kwargs.get('pk')])
+        return reverse('blog:blog_detail', args=[self.kwargs.get('slug')])
 
 
 class BlogListView(ListView):
