@@ -12,7 +12,6 @@ from django.views.generic import CreateView, UpdateView
 
 from users.forms import UserRegisterForm, UserProfileForm, NewPasswordForm
 from users.models import User
-from users.utils import make_verification_code
 
 
 class LoginView(BaseLoginView):
@@ -56,7 +55,6 @@ class VerifyCodeView(View):
             user.is_verified = True
             user.save()
             return redirect('users:login')
-
         return redirect('users:verify_code')
 
 
