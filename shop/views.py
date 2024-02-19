@@ -3,6 +3,7 @@ from django.forms import inlineformset_factory
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from pytils.translit import slugify
 
 from shop.forms import ProductForm, VersionForm
 from shop.models import Category, Product, Version
@@ -48,6 +49,15 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('shop:home')
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_product = form.save()
+            new_product.slug = slugify(new_product.name)
+            new_product.owner = self.request.user
+            new_product.save()
+
+            return super().form_valid(form)
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):

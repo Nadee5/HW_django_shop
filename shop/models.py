@@ -26,6 +26,8 @@ class Product(models.Model):
     date_of_create = models.DateTimeField(auto_now=True, verbose_name='Дата создания')
     date_of_last_change = models.DateTimeField(auto_now_add=True, verbose_name='Дата последнего изменения')
 
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Владелец', **NULLABLE)
+
     def __str__(self):
         return f'{self.name} ({self.category}) - {self.price_for_one}'
 
