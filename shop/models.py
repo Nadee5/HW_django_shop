@@ -28,6 +28,8 @@ class Product(models.Model):
 
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Владелец', **NULLABLE)
 
+    is_published = models.BooleanField(default=False, verbose_name='Опубликовано')
+
     def __str__(self):
         return f'{self.name} ({self.category}) - {self.price_for_one}'
 
@@ -38,6 +40,14 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
+        ordering = ('category', 'name',)
+
+        permissions = [
+            (
+                'set_published',
+                'Can publish products',
+            )
+        ]
 
 
 class Version(models.Model):

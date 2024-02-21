@@ -1,41 +1,51 @@
 {% extends 'shop/base.html' %}
 
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
-        <div class="row">
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-body text-dark">
-                        {% csrf_token %}
-                        {{form.as_p}}
-                        <button type="submit" class="btn btn-success">
-                            {% if object %}
-                            Сохранить
-                            {% else %}
-                            Создать
-                            {% endif %}
-                        </button>
-                    </div>
-                </div>
-            </div>
-            {% if formset %}
-            <div class="col-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title text-dark">Версии товара</h3>
-                    </div>
-                    <div class="card-body text-dark">
-                        {{ formset.management_form }}
-                        {% for form in formset.forms %}
-                        {{ form.as_p }}
-                        {% if not forloop.last %}
-                        <hr class="mb-4">
+<form method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body text-dark">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit" class="btn btn-success">
+                        {% if object %}
+                        Сохранить
+                        {% else %}
+                        Создать
                         {% endif %}
-                        {% endfor %}
-                    </div>
+                    </button>
+                </div>
+                <div class="card-footer">
+                    {% if perms.shop.set_published %}
+                    {% if object.is_published %}
+                    <a class="btn btn-outline-warning" href="{% url 'shop:published_toggle' object.pk %}">Снять с
+                        публикации</a>
+                    {% else %}
+                    <a class="btn btn-outline-success" href="{% url 'shop:published_toggle' object.pk %}">Опубликовать</a>
+                    {% endif %}
+                    {% endif %}
                 </div>
             </div>
-            {% endif %}
         </div>
-    </form>
+        {% if formset %}
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-dark">Версии товара</h3>
+                </div>
+                <div class="card-body text-dark">
+                    {{ formset.management_form }}
+                    {% for form in formset.forms %}
+                    {{ form.as_p }}
+                    {% if not forloop.last %}
+                    <hr class="mb-4">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</form>
 {% endblock %}
