@@ -69,11 +69,11 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     form_class = ProductForm
     #permission_required = 'shop.change_product'
 
-    # def get_object(self, queryset=None):
-    #     self.object = super().get_object(queryset)
-    #     if self.object != self.request.user:
-    #         raise Http404
-    #     return self.object
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.object != self.request.user and not self.request.user.is_staff:
+            raise Http404
+        return self.object
 
     def get_success_url(self, *args, **kwargs):
         return reverse('shop:home', args=[self.get_object().pk])
