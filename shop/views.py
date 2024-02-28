@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
+from django.core.cache import cache
 from django.forms import inlineformset_factory
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
@@ -11,6 +13,7 @@ from pytils.translit import slugify
 
 from shop.forms import ProductForm, VersionForm
 from shop.models import Category, Product, Version
+from shop.services import get_cached_categories_of_products
 
 
 def home(request):
@@ -19,9 +22,12 @@ def home(request):
 
 class CategoryListView(ListView):
     model = Category
-    extra_context = {
-        'title': 'Категории товаров',
-    }
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['category_list'] = get_cached_categories_of_products()
+        context_data['title'] = 'Категории товаров'
+        return context_data
 
 
 def contacts(request):
@@ -116,6 +122,7 @@ class ProductAllListView(ListView):
             queryset = queryset.filter(is_published=True)
         return queryset
 
+
 @login_required
 @permission_required('shop.set_published')
 def published_toggle(request, pk):
@@ -126,9 +133,3 @@ def published_toggle(request, pk):
         product_item.is_published = True
     product_item.save()
     return redirect(reverse('shop:home'))
-
-
-
-
-
-
