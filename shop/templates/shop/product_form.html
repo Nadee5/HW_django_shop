@@ -17,13 +17,15 @@
                     </button>
                 </div>
                 <div class="card-footer">
-                    {% if perms.shop.set_published %}
-                    {% if object.is_published %}
-                    <a class="btn btn-outline-warning" href="{% url 'shop:published_toggle' object.pk %}">Снять с
+                    {% if object %}
+                        {% if perms.shop.set_published %}
+                            {% if object.is_published %}
+                                <a class="btn btn-outline-warning" href="{% url 'shop:published_toggle' object.pk %}">Снять с
                         публикации</a>
-                    {% else %}
-                    <a class="btn btn-outline-success" href="{% url 'shop:published_toggle' object.pk %}">Опубликовать</a>
-                    {% endif %}
+                            {% else %}
+                                <a class="btn btn-outline-success" href="{% url 'shop:published_toggle' object.pk %}">Опубликовать</a>
+                            {% endif %}
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>
